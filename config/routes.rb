@@ -8,11 +8,11 @@ Rails.application.routes.draw do
 
   delete '/sessions' => 'users#logout'
 
-  get 'users/new'
+  get '/users/new'
 
   get '/users/:id' => 'users#profile'
 
-  post 'users/create'
+  post '/users/create'
 
   get 'users/show'
 

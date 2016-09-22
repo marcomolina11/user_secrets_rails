@@ -1,4 +1,9 @@
 <h1>Create New User</h1>
+<% if alert %>
+	<% alert.each do |message| %>
+		<p><%= message %></p>
+	<% end %>
+<% end %>
 <form action="/users/create" method="post">
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 	<p>Email: <input type="text" name="email"></p>
