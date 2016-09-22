@@ -14,9 +14,9 @@ Rails.application.routes.draw do
 
   get 'users/show'
 
-  get 'users/:id/edit' => 'users#edit'
+  patch 'users/:id' => 'users#update'
 
-  get 'users/update'
+  get 'users/:id/edit' => 'users#edit'
 
   get 'users/destroy'
 
