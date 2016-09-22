@@ -1,2 +1,11 @@
+<p><a href="/users/edit">Edit Profile</a> | 
+		<!-- <a href="/secrets">Secrets Wall</a> -->
+</p>
 <h1><%= @user.name %></h1>
 
+<h3>New Secret</h3>
+<form action="/secrets/create" method="post">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<p><textarea name="content"></textarea></p>
+	<p><input type="submit" value="Create Secret"></p>
+</form>
