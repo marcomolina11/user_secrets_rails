@@ -8,16 +8,18 @@ class UsersController < ApplicationController
 
   def login
     user = User.find_by_email(params[:email])
-    if user.authenticate(params[:password])
-     session[:user_id] = user.id
-     redirect_to "/users/#{user.id}"
-    else
-      redirect_to "/sessions/new", :alert => "Invalid email/password"
-    end
+     if user and user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect_to "/users/#{user.id}"
+     else
+        redirect_to "/sessions/new", :alert => "Invalid email/password"
+     end
+
+
   end
 
   def logout
-    session.clear
+    session[:user_id] = nil
     redirect_to '/sessions/new'
   end
 
@@ -54,6 +56,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    User.find(params[:id]).destroy
+    session[:user_id] = nil
+    redirect_to '/sessions/new'
   end
 
   # private

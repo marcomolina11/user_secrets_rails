@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   get 'users/:id/edit' => 'users#edit'
 
-  get 'users/destroy'
+  delete '/users/:id/destroy' => 'users#destroy'
 
   get '/users/:id' => 'users#profile'
 
