@@ -23,9 +23,9 @@
 			</td>
 			<td>
 				<form action="/secrets/<%= secret.id %>/destroy" method="post">
-				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-				<input type="hidden" name="_method" value="delete">
-				<input type="submit" value="Delete">
+					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+					<input type="hidden" name="_method" value="delete">
+					<input type="submit" value="Delete">
 				</form>
 			</td>
 		</tr>

@@ -27,5 +27,8 @@ class SecretsController < ApplicationController
   end
 
   def destroy
+    user = User.find(session[:user_id])
+    Secret.find(params[:id]).destroy
+    redirect_to "/users/#{user.id}"
   end
 end

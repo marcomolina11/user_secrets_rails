@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'secrets/' => 'secrets#index'
+  get '/secrets/' => 'secrets#index'
 
   get 'secrets/new'
 
