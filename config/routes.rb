@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'secrets/new'
 
-  get 'secrets/create'
+  post 'secrets/create' => 'secrets#create'
 
   get 'secrets/show'
 
