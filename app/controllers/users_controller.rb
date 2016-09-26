@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def profile
     @user = User.find(session[:user_id])
+    @secrets = @user.secrets
   end
 
   def login

@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  get 'secrets/' => 'secrets#index'
+
+  get 'secrets/new'
+
+  get 'secrets/create'
+
+  get 'secrets/show'
+
+  get 'secrets/edit'
+
+  get 'secrets/update'
+
+  delete 'secrets/:id/destroy' => 'secrets#destroy'
+
   root 'users#index'
 
   post '/users/login' => 'users#login'

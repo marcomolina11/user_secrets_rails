@@ -9,3 +9,22 @@
 	<p><textarea name="content"></textarea></p>
 	<p><input type="submit" value="Create Secret"></p>
 </form>
+<div>
+	<h3>Secrets</h3>
+	<table>
+	<% @secrets.each do |secret| %>
+		<tr>
+			<td>
+				<%= secret.content %>
+			</td>
+			<td>
+				<form action="/secrets/<%= secret.id %>/destroy" method="post">
+				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+				<input type="hidden" name="_method" value="delete">
+				<input type="submit" value="Delete">
+				</form>
+			</td>
+		</tr>
+	<% end %>
+	</table>
+</div>
