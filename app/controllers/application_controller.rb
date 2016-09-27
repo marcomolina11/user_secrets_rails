@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
   	end
   end
   helper_method :current_user
+  
+  def require_login
+    redirect_to "/sessions/new" if session[:user_id] == nil
+  end
 end
