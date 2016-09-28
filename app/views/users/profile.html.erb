@@ -1,5 +1,6 @@
-<p><a href="/users/<%= @user.id%>/edit">Edit Profile</a> | 
-		<!-- <a href="/secrets">Secrets Wall</a> -->
+<p>
+	<a href="/users/<%= @user.id%>/edit">Edit Profile</a> | 
+	<a href="/secrets">All Secrets</a>
 </p>
 <h1><%= @user.name %></h1>
 <% if alert %>
@@ -13,7 +14,7 @@
 	<p><textarea name="content"></textarea></p>
 	<p><input type="submit" value="Create Secret"></p>
 </form>
-<div>
+<div id="left_panel">
 	<h3>Secrets</h3>
 	<table>
 	<% @secrets.each do |secret| %>
@@ -28,6 +29,19 @@
 					<input type="hidden" name="_method" value="delete">
 					<input type="submit" value="Delete">
 				</form>
+			</td>
+		</tr>
+	<% end %>
+	</table>
+</div>
+<div id="right_panel">
+	<h3>Secrets Liked</h3>
+	<table>
+	<% @secrets_liked.each do |secret| %>
+		<tr>
+			<td>
+				<p><%= secret.content %></p>
+				<p><%= secret.likes.count %> likes</p>
 			</td>
 		</tr>
 	<% end %>

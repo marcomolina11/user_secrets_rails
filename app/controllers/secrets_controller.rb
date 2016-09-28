@@ -1,6 +1,7 @@
 class SecretsController < ApplicationController
   before_action :require_login, only: [:index, :create, :destroy]
   def index
+    @user = User.find(session[:user_id])
     @secrets = Secret.all
     @secrets_liked = User.find(session[:user_id]).secrets_liked.select('id')
 
