@@ -19,7 +19,8 @@
 	<% @secrets.each do |secret| %>
 		<tr>
 			<td>
-				<%= secret.content %>
+				<p><%= secret.content %></p>
+				<p><%= secret.likes.count %> likes</p>
 			</td>
 			<td>
 				<form action="/secrets/<%= secret.id %>/destroy" method="post">
