@@ -10,7 +10,7 @@ RSpec.describe 'updating user' do
     expect(page).not_to have_text('Marco')
     expect(page).to have_text('Drake')
   end
-  it 'updates user and redirects to profile page' do
+  it 'Ensures name cannot be blank and redirects to profile page' do
     user = create_user
     log_in user
     expect(page).to have_text('Marco')

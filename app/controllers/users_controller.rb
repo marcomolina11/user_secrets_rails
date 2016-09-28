@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   before_action :require_login, except: [:index, :create, :login, :new]
+  before_action :require_correct_user, only: [:profile, :edit, :update, :destroy]
   def index
   end
 
   def profile
-    @user = User.find(session[:user_id])
+    @user = User.find(params[:id])
     @secrets = @user.secrets
   end
 
@@ -49,7 +50,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(name:params[:name], email:params[:email])
-       redirect_to "/users/@user.id"
+       redirect_to "/users/#{@user.id}"
     else 
        flash[:alert] = @user.errors.full_messages
        redirect_to controller: 'users', action: 'edit', id: params[:id]
