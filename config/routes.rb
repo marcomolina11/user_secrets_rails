@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  root 'users#new'
+
+  get 'login' => 'sessions#new'
+  
+  get 'sessions/index'
+
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
   post 'likes/:secret_id'=> 'likes#create'
 
   delete 'likes/:secret_id' => 'likes#destroy'
@@ -18,15 +28,11 @@ Rails.application.routes.draw do
 
   delete 'secrets/:id/destroy' => 'secrets#destroy'
 
-  root 'users#index'
-
   post '/users/login' => 'users#login'
 
-  get '/sessions/new' => 'users#index'
+  get '/sessions/new' => 'sessions#new'
 
   delete '/sessions' => 'users#logout'
-
-  get '/users/new'
 
   post '/users/create'
 

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe SecretsController, type: :controller do
   before do
-    @user = create_user
+    @user = User.create(name: "Marco", email: "marco@email.com", password: "password", password_confirmation: "password")
     @secret = @user.secrets.create(content: "secret")
   end
   describe "when not logged in" do
@@ -24,7 +24,7 @@ RSpec.describe SecretsController, type: :controller do
   end
   describe "when logged in as the wrong user" do
     before do
-      @wrong_user = create_user 'julius', 'julius@lakers.com'
+      @wrong_user = User.create(name: "julius", email: "lulius@email.com", password: "password", password_confirmation: "password")
       session[:user_id] = @wrong_user.id
       @secret = @user.secrets.create(content: 'Ooops')
     end

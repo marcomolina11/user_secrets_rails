@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
   	user.valid?
     expect(user.errors[:name].any?).to eq(true)
   end
-  it "requires an email" do 
+  it "requires an email" do
   	user = User.new(email: '')
   	user.valid?
     expect(user.errors[:email].any?).to eq(true)
@@ -21,7 +21,7 @@ RSpec.describe User, type: :model do
   end
   it "rejects improperly formatted email" do
   	emails = %w[@ user @example.com]
-  	emails.each do |email| 
+  	emails.each do |email|
   		user = User.new(email: email)
   		user.valid?
       	expect(user.errors[:email].any?).to eq(true)
@@ -50,14 +50,14 @@ RSpec.describe User, type: :model do
 
   describe 'relationships' do
     it 'has many secrets' do
-      user = create_user
+      user = User.create(name: "Marco", email: "marco@email.com", password: "password", password_confirmation: "password")
       secret1 = user.secrets.create(content: 'secret 1')
       secret2 = user.secrets.create(content: 'secret 2')
       expect(user.secrets).to include(secret1)
       expect(user.secrets).to include(secret2)
     end
     it 'has many likes' do
-      user = create_user
+      user = User.create(name: "Marco", email: "marco@email.com", password: "password", password_confirmation: "password")
       secret1 = user.secrets.create(content: 'Oops')
       secret2 = user.secrets.create(content: 'I did it again')
       like1 = Like.create(user: user, secret: secret1)
@@ -66,5 +66,5 @@ RSpec.describe User, type: :model do
       expect(user.likes).to include(like2)
     end
   end
-  
+
 end

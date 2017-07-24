@@ -1,13 +1,13 @@
-<p>
-	<a href="/users/<%= @user.id%>">Profile</a> | 
-	<a href="/secrets">All Secrets</a>
-</p>
-<form action="/users/<%= @user.id %>/destroy" method="post">
-	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-	<input type="hidden" name="_method" value="delete">
-	<input type="submit" value="Delete Account">
-</form>
-<h1>Edit User</h1>
+<div class="row">
+	<div class="col-md-12">
+		<ul class="nav nav-pills nav-justified">
+		  <li role="presentation"><a class="primary-color-light-text inactive-nav-btn" href="/secrets">All Secrets</a></li>
+		  <li role="presentation"><a class="primary-color-light-text inactive-nav-btn" href="/users/<%= @user.id%>">Profile</a></li>
+		  <li role="presentation"><a class="white-text active-nav-btn" href="/users/<%= @user.id%>/edit" name='Edit Profile' id="Edit Profile">Edit Profile</a></li>
+		</ul>
+	</div>
+</div>
+<h1 class="primary-color-text">Edit User</h1>
 <% if alert %>
 	<% alert.each do |message| %>
 		<p><%= message %></p>
@@ -19,4 +19,9 @@
 	<p>Email: <input type="text" name="email" value="<%= @user.email%>"></p>
 	<p>Name: <input type="text" name="name" value="<%= @user.name%>"></p>
 	<p><input type="submit" value="Update"></p>
+</form>
+<form action="/users/<%= @user.id %>/destroy" method="post">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete Account">
 </form>

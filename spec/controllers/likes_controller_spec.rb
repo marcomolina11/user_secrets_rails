@@ -2,18 +2,18 @@ require 'rails_helper'
 
 RSpec.describe LikesController, type: :controller do
   before do
-    @user = create_user
+    @user = User.create(name: "Marco", email: "marco@email.com", password: "password", password_confirmation: "password")
     @secret = @user.secrets.create(content: 'test secret')
   end
   describe "when not logged in" do
     before do
       session[:user_id] = nil
    	end
-   	it "cannot like a secret" do 
-   	  post :create, secret_id: @secret 
+   	it "cannot like a secret" do
+   	  post :create, secret_id: @secret
    	  expect(response).to redirect_to('/sessions/new')
    	end
-   	it "cannot unlike a secret" do 
+   	it "cannot unlike a secret" do
    	  delete :destroy, secret_id: @secret
    	  expect(response).to redirect_to('/sessions/new')
    	end
@@ -24,7 +24,7 @@ RSpec.describe LikesController, type: :controller do
   #     session[:user_id] = @wrong_user.id
   #   end
   #   it 'cannot destroy another users like' do
-      
+
   #   end
   # end
 end

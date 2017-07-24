@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
 	before do
-		@user = create_user
+		@user = User.create(name: "Marco", email: "marco@email.com", password: "password", password_confirmation: "password")
 	end
 	describe "when not logged in" do
     	before do
@@ -27,7 +27,7 @@ RSpec.describe UsersController, type: :controller do
   end
   describe "when signed in as the wrong user" do
     before do
-      @wrong_user = create_user 'julius', 'julius@lakers.com'
+      @wrong_user = User.create(name: "lulius", email: "lulius@email.com", password: "password", password_confirmation: "password")
       session[:user_id] = @wrong_user.id
     end
     it "cannot access profile page another user" do

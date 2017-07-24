@@ -12,19 +12,13 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 #
-# The `.rspec` file also contains a few flags that are not defaults but that
-# users commonly want.
-#
-def create_user name='Marco', email='marco@email.com', password='password', password_confirmation='password'
-  User.create(name:name, email:email, password:password, password_confirmation:password_confirmation)
-end
-def log_in user, password='password'
-  visit '/sessions/new'
-  fill_in 'email', with: user.email
+# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+def log_in email: "marco@gmail.com", password: "password"
+  visit '/sessions/new' unless current_path == "/sessions/new"
+  fill_in 'email', with: email
   fill_in 'password', with: password
   click_button 'Log in'
 end
-# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -78,10 +72,6 @@ RSpec.configure do |config|
   #   - http://rspec.info/blog/2014/05/notable-changes-in-rspec-3/#zero-monkey-patching-mode
   config.disable_monkey_patching!
 
-  # This setting enables warnings. It's recommended, but in some cases may
-  # be too noisy due to issues in dependencies.
-  config.warnings = true
-
   # Many RSpec users commonly either run the entire suite or an individual
   # file, and it's useful to allow more verbose output when running an
   # individual spec file.
@@ -89,7 +79,7 @@ RSpec.configure do |config|
     # Use the documentation formatter for detailed output,
     # unless a formatter has already been configured
     # (e.g. via a command-line flag).
-    config.default_formatter = 'doc'
+    config.default_formatter = "doc"
   end
 
   # Print the 10 slowest examples and example groups at the

@@ -37,7 +37,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to "/users/#{user.id}"
     else
-      redirect_to "/users/new", alert: user.errors.full_messages
+      redirect_to "/", alert: user.errors.full_messages
     end
   end
 
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(name:params[:name], email:params[:email])
        redirect_to "/users/#{@user.id}"
-    else 
+    else
        flash[:alert] = @user.errors.full_messages
        redirect_to controller: 'users', action: 'edit', id: params[:id]
     end

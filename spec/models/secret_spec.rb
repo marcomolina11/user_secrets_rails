@@ -9,13 +9,13 @@ RSpec.describe Secret, type: :model do
 
   describe 'relationships' do
     it 'belongs to a user' do
-      user = create_user
+      user = User.create(name: "Marco", email: "marco@email.com", password: "password", password_confirmation: "password")
       secret = user.secrets.create(content: 'secret 1')
       expect(secret.user).to eq(user)
     end
     it 'has many likes' do
-      user1 = create_user
-      user2 = create_user 'julius', 'julius@lakers.com'
+      user1 = User.create(name: "Marco", email: "marco@email.com", password: "password", password_confirmation: "password")
+      user2 = User.create(name: "julius", email: "julius@email.com", password: "password", password_confirmation: "password")
       secret = user1.secrets.create(content: 'secret 1')
       like1 = Like.create(user: user1, secret: secret)
       like2 = Like.create(user: user2, secret: secret)

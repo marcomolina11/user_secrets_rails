@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Like, type: :model do
   describe 'relationships' do
 	before do
-      @user = create_user
+      @user = User.create(name: "Marco", email: "marco@email.com", password: "password", password_confirmation: "password")
       @secret = @user.secrets.create(content: 'Oops')
       @like = Like.create(user: @user, secret: @secret)
     end

@@ -13,3 +13,90 @@
  *= require_tree .
  *= require_self
  */
+
+
+.likes-count{
+    font-style: italic;
+}
+.padded{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.primary-color{
+    background-color: #1d5971;
+}
+.primary-color-text{
+    color: #1d5971;
+}
+.accent-color{
+    background-color: #f1aa0e;
+}
+.accent-color-text{
+    color: #f1aa0e !important;
+}
+.secondary-color{
+    background-color: #f5f4f2;
+}
+.secondary-color-text{
+    color: #f5f4f2;
+}
+.primary-color-light{
+    background-color: #2a91ba;
+}
+.primary-color-light-text{
+    color: #2a91ba !important;
+}
+.logo:hover{
+    color: #f5f4f2;
+}
+.white-text{
+    color: white;
+}
+.btn-hover:hover{
+    color: white;
+    background-color: #ffb40f;
+}
+.link-hover:hover{
+    color: #f1aa0e;
+}
+#account{
+    font-size: 18px !important;
+    font-weight: lighter !important;
+}
+.error{
+    color: #d9534f;
+}
+.extra-padding{
+    padding-top: 85px;
+}
+#extra-large{
+    font-size: 50px;
+    font-weight: bolder;
+}
+.active-nav-btn{
+    background-color: #2a91ba;
+    border-top-left-radius: 5px !important;
+    border-top-right-radius: 5px !important;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border: 1px solid #2a91ba !important;
+    margin: 2px;
+}
+.active-nav-btn:hover{
+    background-color: #2a91ba !important;
+    color: white !important;
+}
+.inactive-nav-btn{
+    margin: 2px;
+    background-color: transparent !important;
+    border-top-left-radius: 5px !important;
+    border-top-right-radius: 5px !important;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border: 1px solid #2a91ba !important;
+    color: #2a91ba !important;
+}
+.inactive-nav-btn:hover{
+    background-color: #2a91ba !important;
+    color: white !important;
+}

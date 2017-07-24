@@ -1,15 +1,88 @@
-<p><a href="/">Log in</a></p>
-<h1>Create New User</h1>
-<% if alert %>
-	<% alert.each do |message| %>
-		<p><%= message %></p>
-	<% end %>
-<% end %>
-<form action="/users/create" method="post">
-	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-	<p>Email: <input type="text" name="email"></p>
-	<p>Name: <input type="text" name="name"></p>
-	<p>Password: <input type="password" name="password"></p>
-	<p>Password Confirmation: <input type="password" name="password_confirmation"></p>
-	<p><input type="submit" value="Create"></p>
-</form>
+<div class="container">
+	<div class="row">
+		<!-- start of left col -->
+		<div class="col-md-6">
+			<div class="row extra-padding">	
+				<div class="col-md-1"></div>
+				<div class="col-md-10">
+					<h2 id="extra-large" class="text-center">Welcome to Confessions Wall.</h2>
+				</div>
+				<div class="col-md-1"></div>
+			</div>
+			<div class="row">	
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<h4 class="text-center">This wall is designed for you to finally get that confession out of your chest without having to worry about the consequences. </h4>
+					<p class="text-center">All confessions are kept 100% confidential so you can finally say how you feel!</p>
+				</div>
+				<div class="col-md-2"></div>	
+			</div>
+		</div>
+		<!-- end of left col -->
+
+		<!-- start of right col -->
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<h2 class="text-center">Sign up</h2>
+				<hr>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<% if alert %>
+						<% alert.each do |message| %>
+							<p class="text-center error"><%= message %></p>
+						<% end %>
+					<% end %>
+					<form class="form-horizontal" action="/users/create" method="post">
+						<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+						<div class="form-group input-group">
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-envelope"></span>
+							</span>
+							<input type="email" class="form-control input-lg" name="email" id="email" placeholder="Email" required>
+						</div>
+						<div class="form-group input-group">
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-user"></span>
+							</span>
+							<input type="text" class="form-control input-lg" id="username" placeholder="Username" name="name" required>
+						</div>
+						<div class="form-group input-group">
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-lock"></span>
+							</span>
+							<input type="password" class="form-control input-lg" id="password" placeholder="Password" name="password" required>
+						</div>
+						<div class="form-group input-group">
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-lock"></span>
+							</span>
+							<input name="password_confirmation" type="password" class="form-control input-lg" id="password_confirmation" placeholder="Password Confirmation" required>
+						</div>
+						<div class="form-group row no-gutters text-center">
+							<p>By clicking Sign up or Continue with, I agree to Confessions Wall <a href="#" class="accent-color-text link-hover">Terms of Service</a> and <a href="#" class="accent-color-text link-hover">Privacy Policy.</a></p>
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn accent-color white-text btn-hover btn-block btn-lg">Sign up</button>
+						</div>
+						<hr>
+					</form>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			<div class="row">	
+				<div class="col-md-2"></div>	
+				<div class="col-md-8">
+					<p id="account" class="text-center">Already have an account? <a href="/login" class="accent-color-text link-hover">Log in</a></p>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+		</div>
+		<!-- end of right col -->
+	</div>
+</div>
