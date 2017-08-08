@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     user = User.find_by_email(params[:email])
      if user and user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to "/users/#{user.id}"
+      redirect_to "/secrets"
      else
         redirect_to "/sessions/new", :alert => "Invalid email/password"
      end

@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
   get '/sessions/new' => 'sessions#new'
 
-  delete '/sessions' => 'users#logout'
+  get '/logout' => 'users#logout'
 
   post '/users/create'
 

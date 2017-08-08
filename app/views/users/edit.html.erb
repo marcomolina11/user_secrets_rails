@@ -1,27 +1,59 @@
 <div class="row">
 	<div class="col-md-12">
-		<ul class="nav nav-pills nav-justified">
-		  <li role="presentation"><a class="primary-color-light-text inactive-nav-btn" href="/secrets">All Secrets</a></li>
-		  <li role="presentation"><a class="primary-color-light-text inactive-nav-btn" href="/users/<%= @user.id%>">Profile</a></li>
-		  <li role="presentation"><a class="white-text active-nav-btn" href="/users/<%= @user.id%>/edit" name='Edit Profile' id="Edit Profile">Edit Profile</a></li>
+		<ul class="nav custom-pills">
+		  <li role="presentation"><a class="accent-color-text inactive-nav-btn-left" href="/secrets"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
+		  <li role="presentation"><a class="accent-color-text inactive-nav-btn-middle" href="/users/<%= @user.id%>"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile</a></li>
+		  <li role="presentation"><a class="white-text active-nav-btn-right" href="/users/<%= @user.id%>/edit" name='Edit Profile' id="Edit Profile"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit Profile</a></li>
 		</ul>
 	</div>
 </div>
-<h1 class="primary-color-text">Edit User</h1>
-<% if alert %>
-	<% alert.each do |message| %>
-		<p><%= message %></p>
-	<% end %>
-<% end %>
-<form action="/users/<%= @user.id%>" method="post">
-	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-	<input type="hidden" name="_method" value="patch">
-	<p>Email: <input type="text" name="email" value="<%= @user.email%>"></p>
-	<p>Name: <input type="text" name="name" value="<%= @user.name%>"></p>
-	<p><input type="submit" value="Update"></p>
-</form>
-<form action="/users/<%= @user.id %>/destroy" method="post">
-	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-	<input type="hidden" name="_method" value="delete">
-	<input type="submit" value="Delete Account">
-</form>
+<div class="row extra-margin-bottom">
+	<div class="col-xs-1"></div>
+		<div class="col-xs-10">
+			<div class="row">
+				<div class="col-sm-3"></div>
+				<div class="col-sm-6 special-form">
+					<h2 class="primary-color-text extra-margin-bottom">Edit User</h2>
+					<form action="/users/<%= @user.id %>/destroy" method="post">
+						<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+						<input type="hidden" name="_method" value="delete">
+						<button type="submit" class="extra-margin-bottom btn btn-danger white-text btn-sm btn-delete-account">Delete Account</button>
+					</form>
+				</div>
+				<div class="col-sm-3"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-6">
+					<% if alert %>
+						<% alert.each do |message| %>
+							<p class="text-center error"><%= message %></p>
+						<% end %>
+					<% end %>
+					<form class="form-horizontal" action="/users/<%= @user.id%>" method="post">
+						<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+						<input type="hidden" name="_method" value="patch">
+						<div class="form-group input-group">
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-envelope"></span>
+							</span>
+							<input type="email" class="form-control input-lg" name="email" id="email" placeholder="Email" value="<%= @user.email%>" required>
+						</div>
+						<div class="form-group input-group">
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-user"></span>
+							</span>
+							<input type="text" class="form-control input-lg" id="username" placeholder="Username" name="name" value="<%= @user.name%>" required>
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn accent-color white-text btn-hover btn-block btn-lg">Update</button>
+						</div>
+					</form>
+				</div>
+				<div class="col-md-3"></div>
+			</div>
+		</div>
+	<div class="col-xs-1"></div>
+</div>
+
+
